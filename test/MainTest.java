@@ -61,4 +61,18 @@ class MainTest {
   }
 
   // TODO: Create your test(s) below. /////////////////////////////////////////
+
+  @Test
+  void apostropheTest() {
+    Main.reset();
+    Connection db = Main.createConnection();
+    assertDoesNotThrow(
+      () -> {
+        Main.getId(db, "test's");
+        assertTrue(Main.getWordCount(db) == 1);
+        db.close();
+      }
+    );
+  }
+
 }
